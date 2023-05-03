@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilo.css" />
+</head>
+
+<body class="general">
+    <div class="panel">
+        <input class="input" placeholder="Ingrese texto aquí" id="texto">
+        <div>
+            <div>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18px"
+                        height="18px">
+                        <path fill-rule="evenodd"
+                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </span>
+                <span class="instruccion">Solo letras minúsculas y sin acentos</span>
+            </div>
+            <button class="button azul" onclick="encriptar()" type="button">Encriptar!</button>
+            <button class="button blanco" onclick="desencriptar()" type="button">Desencriptar!</button>
+            <footer>
+                <p>Desarrollado por: <a target="_blank"
+                        href="https://www.linkedin.com/in/alessandro-g%C3%A1lvez/">Alessandro Gálvez</a></p>
+            </footer>
+
+        </div>
+    </div>
+    <div class="grafico">
+        <img src="img/muneco.png" />
+        <textarea id="resultadofinal" class="input2">Ningún texto fue encontrado</textarea>
+        <p class="nota">Ingresa el texto que desees encriptar o desencriptar.</p>
+        <button class="button copy" onclick="copiar()" type="button" id="copiatex">Copiar</button>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    function encriptar() {
+        var frase = document.querySelector("#texto").value
+        var separar = frase.split("")
+        var resultado = separar.map((letra) => {
+            if (letra == "a") {
+                return "ai"
+            } else if (letra == "e") {
+                return "enter"
+            } else if (letra == "i") {
+                return "imes"
+            } else if (letra == "o") {
+                return "ober"
+            } else if (letra == "u") {
+                return "ufat"
+            } else {
+                return letra
+            }
+
+        })
+        var union = resultado.join("")
+        cambiartex(union)
+
+    }
+
+    function desencriptar() {
+        var frase = document.querySelector("#texto").value
+        var desencriptado = frase.replace(/ai/gi, "a").replace(/enter/gi, "e").replace(/imes/gi, "i").replace(/ober/gi, "o").replace(/ufat/gi, "u")
+
+        var texarea = document.querySelector("#resultadofinal")
+        texarea.value = desencriptado
+    }
+
+    function copiar() {
+        var portapapeles = document.querySelector("#copy")
+        portapapeles.select()
+        document.execCommand("copy")
+    }
+
+    function cambiartex(value) {
+        var grafico = document.querySelector(".grafico")
+        grafico.innerHTML = '<h3 id="copy">'+value+'</h3> <button class="button copy" onclick="copiar()" type="button" id="copiatex">Copiar</button>'
+    }
+
+
+</script>
