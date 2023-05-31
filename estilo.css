@@ -1,14 +1,83 @@
-body {
-    margin: 0;
+.general {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+.superior {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.escudo {
+    width: 8%;
+    display: flex;
+    justify-content:left
+}
+
+.input {
+    width: 577px;
+    height: 48px;
+    background-color: #E9ECF8;
+    color: #052051;
+    border: none;
+    font-size: 32px;
+    margin: 50px 15px;
+}
+
+body, html {
+    height: 100vh;
     background-color: #E9ECF8;
     
-    }
+}
 
-.button {
+.instruccion{
+    display: flex;
+    flex-direction: row;
+        
+}
+
+.grafico {
+        background-color: #fff;
+        border-radius: 24px;
+        width: 350px;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        flex-direction: column;
+        padding: 2em;
+}
+
+button {
     width: 328px;
     height: 67px;
-    padding: 24px;
+    padding: 24px 0;
     border-radius: 24px;
+    font-size: 15px;
+    justify-content: center;
+    cursor: pointer;
+    transition: 1s all;
+    
+}
+
+button:hover{
+    transform: scale(1.07);
+}
+
+.buttons {
+    margin: 20px 0px;
+    display: flex;
+    gap: 30px;
 }
 
 .azul {
@@ -21,19 +90,20 @@ body {
     color: #052051;
 }
 
+.input-copy {
+    font-size: 30px;
+    font-family: Arial;
+    overflow-wrap: break-word;
+    width: 350px;
+    text-align: center;
+}
 .copy {
     background-color: #fff;
     color: #052051;
-}
-
-.input {
-    width: 577px;
-    height: 48px;
-    background-color: #E9ECF8;
-    color: #052051;
-    border: none;
-    font-size: 32px;    
-
+    align-self: center;
+    justify-content: end;
+    margin: 2em 0;
+    margin-top: 3em;
 }
 
 .input:focus {
@@ -50,44 +120,10 @@ color: #6e87b6;
 }
 
 .input2 {
-    width: 345px;
-    height: 90px;
-    background-color: #fff;
     color: #052051;
-    border: none;
     font-size: 24px;
     text-align: center;
-}
-
-.general {
-    display: flex;
-    flex-direction: row;
-    padding: 50px;
-    width: 100%;
-    justify-content: space-around;
-
-
-}
-
-.panel {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-}
-.grafico {
-    background-color: #fff;
-    border-radius: 24px;
-    Width: 350px;
-    Height: 660px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.instruccion {
-    font-size: 12px;
-    
+    font-family: Arial;
 }
 
 .nota {
@@ -95,6 +131,51 @@ color: #6e87b6;
     font-family: Arial;
     text-align: center;
     color: #8291aa;
+    margin-top: 15px;
+}
+
+footer {
+    margin-top: 45px;
 }
 
 
+@media screen and (max-width: 1024px){
+    .muñeco{
+        display: none;
+    }
+    .general{
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .panel{
+        justify-content: space-between;
+        height: 90%;
+    }
+    .grafico{
+        height: 10%;
+        width: 80%;
+        text-align: center;
+    }
+
+    .buttons{
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .general{
+        gap: 30px;
+        
+    }
+    .grafico{
+        margin-bottom: 20px;
+    }
+    .buttons{
+        flex-direction: column;
+        align-items: center;
+    }
+    .panel{
+        justify-content: space-between;
+    }
+}
