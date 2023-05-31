@@ -3,42 +3,45 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width" <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Challenge N1</title>
     <link rel="stylesheet" href="estilo.css" />
+    <link rel="stylesheet" href="reset.css" />
 </head>
 
-<body class="general">
-    <div class="panel">
-        <input class="input" placeholder="Ingrese texto aquí" id="texto">
-        <div>
-            <div>
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18px"
-                        height="18px">
-                        <path fill-rule="evenodd"
-                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </span>
-                <span class="instruccion">Solo letras minúsculas y sin acentos</span>
+<body>
+    <div class="general">
+        <div class="panel">
+            <div class="superior">
+                <img class="escudo" src="img/escudo.png" alt="Logo">
+                <input class="input" placeholder="Ingrese texto aquí" id="texto" required>
             </div>
-            <button class="button azul" onclick="encriptar()" type="button">Encriptar!</button>
-            <button class="button blanco" onclick="desencriptar()" type="button">Desencriptar!</button>
-            <footer>
-                <p>Desarrollado por: <a target="_blank"
-                        href="https://www.linkedin.com/in/alessandro-g%C3%A1lvez/">Alessandro Gálvez</a></p>
-            </footer>
+            <div>
+                <div class="instruccion">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10ZM11 14C11 14.5523 10.5523 15 10 15C9.44772 15 9 14.5523 9 14C9 13.4477 9.44772 13 10 13C10.5523 13 11 13.4477 11 14ZM10 5C9.44772 5 9 5.44772 9 6V10C9 10.5523 9.44772 11 10 11C10.5523 11 11 10.5523 11 10V6C11 5.44772 10.5523 5 10 5Z" fill="#4A5568"/>
+                    </svg>
+                    <p>Solo letras minúsculas y sin acentos</p>
+                </div>
+                <div class="buttons">
+                    <button class="button azul" onclick="encriptar()" type="button">Encriptar!</button>
+                    <button class="button blanco" onclick="desencriptar()" type="button">Desencriptar!</button>
+                </div>
+                <footer>
+                    <p>Desarrollado por: <a target="_blank"
+                            href="https://www.linkedin.com/in/alessandro-g%C3%A1lvez/">Alessandro Gálvez</a></p>
+                </footer>
+            </div>
 
         </div>
+        <div class="grafico">
+            <img src="img/muneco.png" alt="Imagen niño" class="muñeco" />
+            <h2 class="input2">Ningún texto fue encontrado</h2>
+            <p class="nota">Ingresa el texto que desees encriptar o desencriptar.</p>
+        </div>
     </div>
-    <div class="grafico">
-        <img src="img/muneco.png" />
-        <textarea id="resultadofinal" class="input2">Ningún texto fue encontrado</textarea>
-        <p class="nota">Ingresa el texto que desees encriptar o desencriptar.</p>
-        <button class="button copy" onclick="copiar()" type="button" id="copiatex">Copiar</button>
-    </div>
+
 
 </body>
 
@@ -63,30 +66,27 @@
             } else {
                 return letra
             }
-
         })
         var union = resultado.join("")
         cambiartex(union)
-
     }
 
     function desencriptar() {
         var frase = document.querySelector("#texto").value
         var desencriptado = frase.replace(/ai/gi, "a").replace(/enter/gi, "e").replace(/imes/gi, "i").replace(/ober/gi, "o").replace(/ufat/gi, "u")
-
-        var texarea = document.querySelector("#resultadofinal")
-        texarea.value = desencriptado
+        cambiartex(desencriptado)
     }
 
     function copiar() {
         var portapapeles = document.querySelector("#copy")
-        portapapeles.select()
-        document.execCommand("copy")
+        var text = portapapeles.textContent
+        navigator.clipboard.writeText(text)
+        
     }
 
     function cambiartex(value) {
         var grafico = document.querySelector(".grafico")
-        grafico.innerHTML = '<h3 id="copy">'+value+'</h3> <button class="button copy" onclick="copiar()" type="button" id="copiatex">Copiar</button>'
+        grafico.innerHTML = '<h3 id="copy" class="input-copy">' + value + '</h3> <button class="button copy" onclick="copiar()" type="button" id="copiatex">Copiar</button>'
     }
 
 
